@@ -14,6 +14,6 @@ id_parceiro_local INT PRIMARY KEY,
 nome VARCHAR(100),
 responsavel VARCHAR(100),
 localizacao VARCHAR(500),
-contato VARCHAR(50),
+contato VARCHAR(50)
 );
 
