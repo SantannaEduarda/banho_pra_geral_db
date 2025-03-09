@@ -23,3 +23,4 @@ CREATE TABLE voluntario (
     contato VARCHAR(500),
     funcao ENUM('Area do banho', 'Doador', 'Area da cozinha')
 );
+
