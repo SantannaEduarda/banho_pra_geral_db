@@ -27,7 +27,7 @@ Este projeto consiste em um banco de dados com interface gráfica projetado para
 
 ## Modelo Lógico 
 ![image](https://github.com/user-attachments/assets/b58b592a-0744-44be-b813-0e767219f423)
-![image](https://github.com/user-attachments/assets/5e8a4aeb-1324-40dc-89c0-0584d16e03a9)
+
 
 
 ### Análise de Requisitos 
