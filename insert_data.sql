@@ -52,3 +52,5 @@ INSERT INTO doacao VALUES
 (3, 'Itens Higienicos', 100, '2024-02-20', '-', 'Itens de uso', 3),
 (4, 'Marmitas', 70, '2024-03-05', '-', 'Itens de consumo', 4),
 (5, 'Roupas', 45, '2024-03-10', 'G', 'Itens de uso', 2);
+
+SHOW COLUMNS FROM beneficiario;
