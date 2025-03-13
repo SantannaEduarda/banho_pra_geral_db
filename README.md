@@ -9,16 +9,13 @@ Este projeto consiste em um banco de dados com interface gráfica projetado para
 - **Linguagem SQL/NoSQL**: SQL
 - **Ferramentas**: MySQL Workbench
 
-##Funcionalidades
+## Funcionalidades
 - **Registro e gerenciamento de beneficiários
 - **Registro de atendimento e doações
 - **Relatórios sobre distribuição de doações e número de atendimentos
 - **Controle de voluntários e suas atividades
 - **Visualição dos dados
 
-
-##Visualize nosso projeto
-**EM ANDAMENTO
 
 
 ### Modelo Conceitual
