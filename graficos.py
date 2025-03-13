@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Configuração do estilo dos gráficos
-sns.set_theme(style="whitegrid")
+sns.set_theme(style="darkgrid")
 
 # Conectar ao MySQL
 try:
@@ -61,7 +61,7 @@ consultas = {
 # Criar subplots dinamicamente
 num_graficos = len(consultas)
 linhas = (num_graficos // 3) + (num_graficos % 3 > 0)
-fig, axes = plt.subplots(nrows=linhas, ncols=3, figsize=(15, 5 * linhas))
+fig, axes = plt.subplots(nrows=linhas, ncols=3, figsize=(18, 6 * linhas))
 axes = axes.flatten()
 
 grafico_idx = 0  
@@ -81,83 +81,54 @@ for titulo, query in consultas.items():
         ax.set_xticklabels(df[df.columns[0]], rotation=45)
     
     elif num_categorias > 6:
-        sns.barplot(y=df.columns[0], x=df.columns[1], data=df, palette="magma", ax=ax)
+        sns.barplot(y=df.columns[0], x=df.columns[1], data=df, palette="rocket", ax=ax)
         ax.set_ylabel(df.columns[0])
         ax.set_xlabel("Quantidade")
     
     elif num_categorias <= 4:
-        ax.pie(df[df.columns[1]], labels=df[df.columns[0]], autopct='%1.1f%%', colors=sns.color_palette("pastel"))
+        ax.pie(df[df.columns[1]], labels=df[df.columns[0]], autopct='%1.1f%%', colors=sns.color_palette("coolwarm"))
     
     else:
-        sns.barplot(x=df.columns[0], y=df.columns[1], data=df, palette="viridis", ax=ax)
+        sns.barplot(x=df.columns[0], y=df.columns[1], data=df, palette="magma", ax=ax)
         ax.set_xticklabels(df[df.columns[0]], rotation=30)
     
     ax.set_title(titulo)
     ax.set_ylabel("Quantidade")
     grafico_idx += 1
 
-    # Salvar gráficos individuais
-    plt.figure()
-    sns.barplot(x=df.columns[0], y=df.columns[1], data=df, palette="viridis")
-    plt.title(titulo)
-    plt.ylabel("Quantidade")
-    plt.xticks(rotation=30)
-    plt.savefig(f"{titulo}.png")
-    plt.close()
-
 # Remover gráficos vazios
 for j in range(grafico_idx, len(axes)):
     fig.delaxes(axes[j])
-    
-    doacoes = pd.DataFrame({
+
+doacoes = pd.DataFrame({
     'id': [1, 2, 3, 4, 5],
     'tipo': ['Marmitas', 'Roupas', 'Itens Higienicos', 'Marmitas', 'Roupas'],
-    'quantidade': [50, 30, 100, 70, 45],
-    'data': pd.to_datetime(['2024-02-28', '2024-02-15', '2024-02-20', '2024-03-05', '2024-03-10'])
+    'quantidade': [50, 30, 100, 70, 45]
 })
 
-# Dados das ações
 acoes = pd.DataFrame({
     'id': [1, 2, 3, 4, 5],
     'local': ['Praça Central', 'Igreja São João', 'ONG Mãos Solidárias', 'Centro Comunitário Luz', 'Projeto Vida Nova'],
-    'data': pd.to_datetime(['2024-03-01', '2024-03-10', '2024-03-20', '2024-03-25', '2024-04-05'])
+    'data': pd.date_range(start='2024-03-01', periods=5, freq='10D')
 })
 
 # Gráfico 1: Distribuição das Doações por Tipo
 plt.figure(figsize=(8, 5))
-doacoes.groupby('tipo')['quantidade'].sum().plot(kind='bar', color=['blue', 'red', 'green'])
+plt.pie(doacoes.groupby('tipo')['quantidade'].sum(), labels=doacoes['tipo'].unique(), autopct='%1.1f%%', colors=sns.color_palette("pastel"))
 plt.title('Distribuição das Doações por Tipo')
-plt.xlabel('Tipo de Doação')
-plt.ylabel('Quantidade')
-plt.xticks(rotation=45)
 plt.show()
 
-# Gráfico 2: Distribuição das Ações ao Longo do Tempo
+# Gráfico 2: Frequência das Ações ao Longo do Tempo
 plt.figure(figsize=(8, 5))
-acoes['data'].value_counts().sort_index().plot(kind='bar', color='purple')
+sns.lineplot(x=acoes['data'], y=acoes.index, marker='o', linestyle='-', color='purple')
 plt.title('Frequência das Ações ao Longo do Tempo')
 plt.xlabel('Data')
 plt.ylabel('Número de Ações')
 plt.xticks(rotation=45)
-plt.show()
-
-# Gráfico 3: Relação entre Doações e Ações ao Longo do Tempo
-plt.figure(figsize=(8, 5))
-plt.plot(doacoes['data'], doacoes['quantidade'], label='Doações', marker='o', linestyle='-')
-plt.scatter(acoes['data'], [10] * len(acoes), color='red', label='Ações', marker='x')
-plt.title('Relação entre Doações e Ações ao Longo do Tempo')
-plt.xlabel('Data')
-plt.ylabel('Quantidade')
-plt.legend()
 plt.grid(True)
 plt.show()
 
 plt.tight_layout()
-
-# Salvar os gráficos como PDF e PNG
-plt.savefig("graficos.pdf")
-plt.savefig("graficos.png")
-plt.show()
 
 # Fechar conexão com segurança
 try:
