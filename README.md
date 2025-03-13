@@ -34,7 +34,7 @@ https://docs.google.com/document/d/1SLJSJCrdSi5IpHcNd_g_gXBENhZ7J3PQlKjacakk764/
 <table>
   <tr>
      <td align="center">
-      <a href="#"><img style="border-radius: 50%;" src="https://github.com/user-attachments/assets/8520495f-4fb5-4ec3-a7f6-a4c212785395" width="100px;" alt=""/>
+      <a href="#"><img style="border-radius: 50%;" src="https://github.com/user-attachments/assets/8520495f-4fb5-4ec3-a7f6-a4c212785395" width="110px;" alt=""/>
       <br /><sub><b>Maria Eduarda</b></sub></a><br/><a href="https://www.linkedin.com/in/maria-eduarda-sant%E2%80%99anna-09a342301/" title="Contribuidor">Líder🚀</a>
     </td>
     <td align="center">
